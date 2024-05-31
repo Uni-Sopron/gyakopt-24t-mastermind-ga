@@ -20,7 +20,8 @@ def generate_random_string(length):
 def fitness_function(candidate, target):
     return sum(1 for a, b in zip(candidate, target) if a == b)
 
-def select_parents(population, fitness_scores, num_parents):
+def select_parents(population, num_parents):
+    fitness_scores = [fitness_function(individual, test_string) for individual in population]
     parents = sorted(zip(population, fitness_scores), key=lambda x: x[1], reverse=True)[:num_parents]
     return [p[0] for p in parents]
 
@@ -39,8 +40,8 @@ def genetic_algorithm(test_string, config):
     population = [generate_random_string(len(test_string)) for _ in range(config.population_size)]
     
     for i in range(config.iterations):
-        fitness_scores = [fitness_function(individual, test_string) for individual in population]
-        next_population = select_parents(population, fitness_scores, config.elitism)
+        best_candidates = select_parents(population, config.elitism)
+        next_population = best_candidates[:]
 
         non_generated_population_size = config.population_size - config.random_generated_candidate_num
         
