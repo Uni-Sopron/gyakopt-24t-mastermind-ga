@@ -2,9 +2,10 @@ import random
 import string
 import matplotlib.pyplot as plt
 
+CHARACTERS = string.ascii_letters + string.digits + string.punctuation
+
 def generateRandomString(length):
-    characters = string.ascii_letters + string.digits + string.punctuation
-    return ''.join(random.choice(characters) for _ in range(length))
+    return ''.join(random.choice(CHARACTERS) for _ in range(length))
 
 def fitnessFunction(candidate, target):
     return sum(1 for a, b in zip(candidate, target) if a == b)
@@ -18,11 +19,10 @@ def crossover(parent1, parent2):
     return parent1[:crossoverPoint] + parent2[crossoverPoint:]
 
 def mutate(candidate, mutationRate):
-    characters = string.ascii_letters + string.digits + string.punctuation
     candidateList = list(candidate)
     for i in range(len(candidateList)):
         if random.random() < mutationRate:
-            candidateList[i] = random.choice(characters)
+            candidateList[i] = random.choice(CHARACTERS)
     return ''.join(candidateList)
 
 def geneticAlgorithm(testString, populationSize, iterations, elitism, crossoverNum, generation, mutationRate):
