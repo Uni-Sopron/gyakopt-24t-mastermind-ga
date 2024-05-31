@@ -38,21 +38,21 @@ def mutate(candidate, mutation_rate):
 
 def genetic_algorithm(test_string, config):
     population = [generate_random_string(len(test_string)) for _ in range(config.population_size)]
-    
     for i in range(config.iterations):
         best_candidates = select_parents(population, config.elitism)
-        next_population = best_candidates[:]
 
-        non_generated_population_size = config.population_size - config.random_generated_candidate_num
+        next_population = best_candidates[:]
+        generated_candidates = [generate_random_string(len(test_string)) for _ in range(config.random_generated_candidate_num)]
+        next_population.extend(generated_candidates)
         
-        while len(next_population) < non_generated_population_size:
-            parents = random.sample(next_population[:config.elitism], 2)
+        while len(next_population) < config.population_size:
+            parents = random.sample(best_candidates, 2)
             for _ in range(config.crossover_num):
-                offspring = crossover(parents[0], parents[1])
-                offspring = mutate(offspring, config.mutation_rate)
-                next_population.append(offspring)
+                if len(next_population) < config.population_size:
+                    offspring = crossover(parents[0], parents[1])
+                    offspring = mutate(offspring, config.mutation_rate)
+                    next_population.append(offspring)
         
-        next_population = next_population[:non_generated_population_size] + [generate_random_string(len(test_string)) for _ in range(config.random_generated_candidate_num)]
         population = next_population
         current_best_solution = max(population, key=lambda x: fitness_function(x, test_string))
         if fitness_function(current_best_solution, test_string) == len(test_string):
