@@ -1,8 +1,18 @@
 import random
 import string
 import matplotlib.pyplot as plt
+from dataclasses import dataclass
 
 CHARACTERS = string.ascii_letters + string.digits + string.punctuation
+
+@dataclass
+class GAConfig:
+    population_size: int
+    iterations: int
+    elitism: int
+    crossover_num: int
+    random_generated_candidate_num: int
+    mutation_rate: float
 
 def generate_random_string(length):
     return ''.join(random.choice(CHARACTERS) for _ in range(length))
@@ -25,23 +35,23 @@ def mutate(candidate, mutation_rate):
             candidate_list[i] = random.choice(CHARACTERS)
     return ''.join(candidate_list)
 
-def genetic_algorithm(test_string, population_size, iterations, elitism, crossover_num, generation, mutation_rate):
-    population = [generate_random_string(len(test_string)) for _ in range(population_size)]
+def genetic_algorithm(test_string, config):
+    population = [generate_random_string(len(test_string)) for _ in range(config.population_size)]
     
-    for i in range(iterations):
+    for i in range(config.iterations):
         fitness_scores = [fitness_function(individual, test_string) for individual in population]
-        next_population = select_parents(population, fitness_scores, elitism)
+        next_population = select_parents(population, fitness_scores, config.elitism)
 
-        non_generated_population_size = population_size - generation
+        non_generated_population_size = config.population_size - config.random_generated_candidate_num
         
         while len(next_population) < non_generated_population_size:
-            parents = random.sample(next_population[:elitism], 2)
-            for _ in range(crossover_num):
+            parents = random.sample(next_population[:config.elitism], 2)
+            for _ in range(config.crossover_num):
                 offspring = crossover(parents[0], parents[1])
-                offspring = mutate(offspring, mutation_rate)
+                offspring = mutate(offspring, config.mutation_rate)
                 next_population.append(offspring)
         
-        next_population = next_population[:non_generated_population_size] + [generate_random_string(len(test_string)) for _ in range(generation)]
+        next_population = next_population[:non_generated_population_size] + [generate_random_string(len(test_string)) for _ in range(config.random_generated_candidate_num)]
         population = next_population
         current_best_solution = max(population, key=lambda x: fitness_function(x, test_string))
         if fitness_function(current_best_solution, test_string) == len(test_string):
@@ -70,31 +80,33 @@ def generate_plot(results, param_for_graph):
 
 # Decide, if you want to test on a single string or a set of parametrized cases
 use_single_string = True
-# TRY OUT HERE!
 
+# TRY OUT HERE!
 if use_single_string:
     string_length = 100
     test_string = generate_random_string(string_length)
     print("Test string is: " + test_string)
-    population_size = 600
-    iterations = 300
-    elitism = 20
-    crossover_num = 2
-    generation = 10
-    mutation_rate = 0.01
-    best_solution = genetic_algorithm(test_string, population_size, iterations, elitism, crossover_num, generation, mutation_rate)
+    config = GAConfig(
+        population_size=600,
+        iterations=300,
+        elitism=20,
+        crossover_num=2,
+        random_generated_candidate_num=10,
+        mutation_rate=0.01
+    )
+    best_solution = genetic_algorithm(test_string, config)
     print("Best solution:", best_solution)
     print("Fitness score:", fitness_function(best_solution, test_string))
 else:
     # Use a parameter of the following to create a graph: 
-    # stringLength populationSize iterations elitism crossoverNum generation mutationRate
+    # string_length population_size iterations elitism crossover_num random_generated_candidate_num mutation_rate
     param_for_graph = "population_size"
     parameter_sets = [
-        {"string_length": 100, "population_size": 100, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
-        {"string_length": 100, "population_size": 200, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
-        {"string_length": 100, "population_size": 300, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
-        {"string_length": 100, "population_size": 400, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
-        {"string_length": 100, "population_size": 500, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 100, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 200, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 300, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 400, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 500, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
     ]
 
     results = []
@@ -102,14 +114,16 @@ else:
     for params in parameter_sets:
         string_length = params["string_length"]
         test_string = generate_random_string(string_length)
-        population_size = params["population_size"]
-        iterations = params["iterations"]
-        elitism = params["elitism"]
-        crossover_num = params["crossover_num"]
-        generation = params["generation"]
-        mutation_rate = params["mutation_rate"]
+        config = GAConfig(
+            population_size=params["population_size"],
+            iterations=params["iterations"],
+            elitism=params["elitism"],
+            crossover_num=params["crossover_num"],
+            random_generated_candidate_num=params["random_generated_candidate_num"],
+            mutation_rate=params["mutation_rate"]
+        )
 
-        best_solution = genetic_algorithm(test_string, population_size, iterations, elitism, crossover_num, generation, mutation_rate)
+        best_solution = genetic_algorithm(test_string, config)
         fitness_score = fitness_function(best_solution, test_string)
         
         results.append({param_for_graph: params[param_for_graph], "fitness_score": fitness_score})
