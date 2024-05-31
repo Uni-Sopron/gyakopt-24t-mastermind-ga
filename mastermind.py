@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 
 def generateRandomString(length):
     characters = string.ascii_letters + string.digits + string.punctuation
-    randomString = ''.join(random.choice(characters) for _ in range(length))
-    return randomString
+    return ''.join(random.choice(characters) for _ in range(length))
 
 def fitnessFunction(candidate, target):
     return sum(1 for a, b in zip(candidate, target) if a == b)
