@@ -3,8 +3,14 @@ import string
 import matplotlib.pyplot as plt
 from dataclasses import dataclass
 import argparse
+import json
 
 CHARACTERS = string.ascii_letters + string.digits + string.punctuation
+
+def load_config_from_json(filepath):
+    with open(filepath, 'r') as file:
+        data = json.load(file)
+    return GAConfig(**data)
 
 @dataclass
 class GAConfig:
@@ -85,14 +91,7 @@ def main(use_single_string):
         string_length = 100
         test_string = generate_random_string(string_length)
         print("Test string is: " + test_string)
-        config = GAConfig(
-            population_size=600,
-            iterations=300,
-            elitism=20,
-            crossover_num=2,
-            random_generated_candidate_num=10,
-            mutation_rate=0.01
-        )
+        config = load_config_from_json('single_string_config.json')
         best_solution = genetic_algorithm(test_string, config)
         print("Best solution:", best_solution)
         print("Fitness score:", fitness_function(best_solution, test_string))
