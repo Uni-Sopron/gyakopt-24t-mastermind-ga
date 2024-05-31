@@ -4,121 +4,113 @@ import matplotlib.pyplot as plt
 
 CHARACTERS = string.ascii_letters + string.digits + string.punctuation
 
-def generateRandomString(length):
+def generate_random_string(length):
     return ''.join(random.choice(CHARACTERS) for _ in range(length))
 
-def fitnessFunction(candidate, target):
+def fitness_function(candidate, target):
     return sum(1 for a, b in zip(candidate, target) if a == b)
 
-def selectParents(population, fitnessScores, numParents):
-    parents = sorted(zip(population, fitnessScores), key=lambda x: x[1], reverse=True)[:numParents]
+def select_parents(population, fitness_scores, num_parents):
+    parents = sorted(zip(population, fitness_scores), key=lambda x: x[1], reverse=True)[:num_parents]
     return [p[0] for p in parents]
 
 def crossover(parent1, parent2):
-    crossoverPoint = random.randint(0, len(parent1) - 1)
-    return parent1[:crossoverPoint] + parent2[crossoverPoint:]
+    crossover_point = random.randint(0, len(parent1) - 1)
+    return parent1[:crossover_point] + parent2[crossover_point:]
 
-def mutate(candidate, mutationRate):
-    candidateList = list(candidate)
-    for i in range(len(candidateList)):
-        if random.random() < mutationRate:
-            candidateList[i] = random.choice(CHARACTERS)
-    return ''.join(candidateList)
+def mutate(candidate, mutation_rate):
+    candidate_list = list(candidate)
+    for i in range(len(candidate_list)):
+        if random.random() < mutation_rate:
+            candidate_list[i] = random.choice(CHARACTERS)
+    return ''.join(candidate_list)
 
-def geneticAlgorithm(testString, populationSize, iterations, elitism, crossoverNum, generation, mutationRate):
-    population = [generateRandomString(len(testString)) for _ in range(populationSize)]
+def genetic_algorithm(test_string, population_size, iterations, elitism, crossover_num, generation, mutation_rate):
+    population = [generate_random_string(len(test_string)) for _ in range(population_size)]
     
     for i in range(iterations):
-        fitnessScores = [fitnessFunction(individual, testString) for individual in population]
-        nextPopulation = selectParents(population, fitnessScores, elitism)
+        fitness_scores = [fitness_function(individual, test_string) for individual in population]
+        next_population = select_parents(population, fitness_scores, elitism)
 
-        nonGeneratedPopulationSize = populationSize - generation
+        non_generated_population_size = population_size - generation
         
-        while len(nextPopulation) < nonGeneratedPopulationSize:
-            parents = random.sample(nextPopulation[:elitism], 2)
-            for _ in range(crossoverNum):
+        while len(next_population) < non_generated_population_size:
+            parents = random.sample(next_population[:elitism], 2)
+            for _ in range(crossover_num):
                 offspring = crossover(parents[0], parents[1])
-                offspring = mutate(offspring, mutationRate)
-                nextPopulation.append(offspring)
+                offspring = mutate(offspring, mutation_rate)
+                next_population.append(offspring)
         
-        nextPopulation = nextPopulation[:nonGeneratedPopulationSize] + [generateRandomString(len(testString)) for _ in range(generation)]
-        population = nextPopulation
-        currentBestSolution = max(population, key=lambda x: fitnessFunction(x, testString))
-        if(fitnessFunction(currentBestSolution, testString)==len(testString)):
-            print("Perfect solution found in "+str(i)+". iteration")
-            return currentBestSolution
+        next_population = next_population[:non_generated_population_size] + [generate_random_string(len(test_string)) for _ in range(generation)]
+        population = next_population
+        current_best_solution = max(population, key=lambda x: fitness_function(x, test_string))
+        if fitness_function(current_best_solution, test_string) == len(test_string):
+            print("Perfect solution found in " + str(i) + ". iteration")
+            return current_best_solution
 
-    bestSolution = max(population, key=lambda x: fitnessFunction(x, testString))
-    return bestSolution
+    best_solution = max(population, key=lambda x: fitness_function(x, test_string))
+    return best_solution
 
-def generatePlot(results, paramForGraph):
-    paramValues = [result[paramForGraph] for result in results]
-    fitnessScores = [result["fitnessScore"] for result in results]
+def generate_plot(results, param_for_graph):
+    param_values = [result[param_for_graph] for result in results]
+    fitness_scores = [result["fitness_score"] for result in results]
     
     # Assuming only one param is different at a time between populations
-    if paramForGraph == "stringLength":
-        fitnessScores = [score / length for score, length in zip(fitnessScores, paramValues)]
+    if param_for_graph == "string_length":
+        fitness_scores = [score / length for score, length in zip(fitness_scores, param_values)]
         plt.ylabel('Fitness Score / String Length')
     else:
         plt.ylabel('Fitness Score')
 
-    plt.plot(paramValues, fitnessScores, marker='o')
-    plt.xlabel(paramForGraph)
+    plt.plot(param_values, fitness_scores, marker='o')
+    plt.xlabel(param_for_graph)
     plt.title('Genetic Algorithm Performance')
     plt.grid(True)
     plt.show()
 
 # Decide, if you want to test on a single string or a set of parametrized cases
-useSingleString = True
-
+use_single_string = True
 # TRY OUT HERE!
-if(useSingleString):
-    stringLength = 100
-    testString = generateRandomString(stringLength)
-    print("Test string is: "+testString)
-    populationSize = 600
+
+if use_single_string:
+    string_length = 100
+    test_string = generate_random_string(string_length)
+    print("Test string is: " + test_string)
+    population_size = 600
     iterations = 300
     elitism = 20
-    crossoverNum = 2
+    crossover_num = 2
     generation = 10
-    mutationRate = 0.01
-    bestSolution = geneticAlgorithm(testString, populationSize, iterations, elitism, crossoverNum, generation, mutationRate)
-    print("Best solution:", bestSolution)
-    print("Fitness score:", fitnessFunction(bestSolution, testString))
+    mutation_rate = 0.01
+    best_solution = genetic_algorithm(test_string, population_size, iterations, elitism, crossover_num, generation, mutation_rate)
+    print("Best solution:", best_solution)
+    print("Fitness score:", fitness_function(best_solution, test_string))
 else:
-
     # Use a parameter of the following to create a graph: 
     # stringLength populationSize iterations elitism crossoverNum generation mutationRate
-    paramForGraph = "populationSize"
-    parameterSets = [
-        {"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01},
-        {"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01},
-        {"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01},
-        {"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01},
-        {"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01},
+    param_for_graph = "population_size"
+    parameter_sets = [
+        {"string_length": 100, "population_size": 100, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 200, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 300, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 400, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
+        {"string_length": 100, "population_size": 500, "iterations": 100, "elitism": 20, "crossover_num": 2, "generation": 10, "mutation_rate": 0.01},
     ]
 
     results = []
 
-    for params in parameterSets:
-        stringLength = params["stringLength"]
-        testString = generateRandomString(stringLength)
-        populationSize = params["populationSize"]
+    for params in parameter_sets:
+        string_length = params["string_length"]
+        test_string = generate_random_string(string_length)
+        population_size = params["population_size"]
         iterations = params["iterations"]
-
         elitism = params["elitism"]
-        crossoverNum = params["crossoverNum"]
+        crossover_num = params["crossover_num"]
         generation = params["generation"]
-        mutationRate = params["mutationRate"]
+        mutation_rate = params["mutation_rate"]
 
-        bestSolution = geneticAlgorithm(testString, populationSize, iterations, elitism, crossoverNum, generation, mutationRate)
-        fitnessScore = fitnessFunction(bestSolution, testString)
+        best_solution = genetic_algorithm(test_string, population_size, iterations, elitism, crossover_num, generation, mutation_rate)
+        fitness_score = fitness_function(best_solution, test_string)
         
-        results.append({paramForGraph: params[paramForGraph], "fitnessScore": fitnessScore})
-    generatePlot(results, paramForGraph)
-
-
-
-
-
-
+        results.append({param_for_graph: params[param_for_graph], "fitness_score": fitness_score})
+    generate_plot(results, param_for_graph)
