@@ -8,6 +8,15 @@ import json
 CHARACTERS = string.ascii_letters + string.digits + string.punctuation
 
 def load_config_from_json(filepath):
+    """
+    Load GAConfig from a JSON file.
+
+    Args:
+        filepath (str): The path to the JSON file containing the configuration.
+
+    Returns:
+        GAConfig: The GAConfig object with the loaded configuration.
+    """
     with open(filepath, 'r') as file:
         data = json.load(file)
     return GAConfig(**data)
@@ -22,21 +31,71 @@ class GAConfig:
     mutation_rate: float
 
 def generate_random_string(length):
+    """
+    Generate a random string of a given length.
+
+    Args:
+        length (int): The length of the string to generate.
+
+    Returns:
+        str: The generated random string.
+    """
     return ''.join(random.choice(CHARACTERS) for _ in range(length))
 
 def fitness_function(candidate, target):
+    """
+    Calculate the fitness score of a candidate string compared to the target string.
+
+    Args:
+        candidate (str): The candidate string.
+        target (str): The target string.
+
+    Returns:
+        int: The fitness score indicating the number of matching characters.
+    """
     return sum(1 for a, b in zip(candidate, target) if a == b)
 
 def select_parents(population, num_parents, test_string):
+    """
+    Select the top candidates (parents) from the population based on fitness scores.
+
+    Args:
+        population (list of str): The population of candidate strings.
+        num_parents (int): The number of parents to select.
+        test_string (str): The target string.
+
+    Returns:
+        list of str: The selected parent strings.
+    """
     fitness_scores = [fitness_function(individual, test_string) for individual in population]
     parents = sorted(zip(population, fitness_scores), key=lambda x: x[1], reverse=True)[:num_parents]
     return [p[0] for p in parents]
 
 def crossover(parent1, parent2):
+    """
+    Perform a crossover between two parent strings to create an offspring.
+
+    Args:
+        parent1 (str): The first parent string.
+        parent2 (str): The second parent string.
+
+    Returns:
+        str: The offspring string resulting from the crossover.
+    """
     crossover_point = random.randint(0, len(parent1) - 1)
     return parent1[:crossover_point] + parent2[crossover_point:]
 
 def mutate(candidate, mutation_rate):
+    """
+    Mutate a candidate string based on the mutation rate.
+
+    Args:
+        candidate (str): The candidate string.
+        mutation_rate (float): The mutation rate.
+
+    Returns:
+        str: The mutated candidate string.
+    """
     candidate_list = list(candidate)
     for i in range(len(candidate_list)):
         if random.random() < mutation_rate:
@@ -44,6 +103,16 @@ def mutate(candidate, mutation_rate):
     return ''.join(candidate_list)
 
 def genetic_algorithm(test_string, config):
+    """
+    Run the genetic algorithm to find the best solution for the target string.
+
+    Args:
+        test_string (str): The target string.
+        config (GAConfig): The configuration for the genetic algorithm.
+
+    Returns:
+        str: The best solution found by the genetic algorithm.
+    """
     population = [generate_random_string(len(test_string)) for _ in range(config.population_size)]
     for i in range(config.iterations):
         best_candidates = select_parents(population, config.elitism, test_string)
@@ -70,6 +139,13 @@ def genetic_algorithm(test_string, config):
     return best_solution
 
 def generate_plot(results, param_for_graph):
+    """
+    Generate and display a plot of the genetic algorithm performance.
+
+    Args:
+        results (list of dict): The results containing parameter values and fitness scores.
+        param_for_graph (str): The parameter to be plotted on the x-axis.
+    """
     param_values = [result[param_for_graph] for result in results]
     fitness_scores = [result["fitness_score"] for result in results]
     
@@ -87,11 +163,26 @@ def generate_plot(results, param_for_graph):
     plt.show()
 
 def dict_to_gaconfig(config_dict):
+    """
+    Convert a dictionary to a GAConfig object, excluding the 'string_length' key if present.
+
+    Args:
+        config_dict (dict): The dictionary containing configuration parameters.
+
+    Returns:
+        GAConfig: The GAConfig object created from the dictionary.
+    """
     config_dict_copy = config_dict.copy()
     config_dict_copy.pop('string_length', None)
     return GAConfig(**config_dict_copy)
 
 def main(use_single_string):
+    """
+    Main function to run the genetic algorithm or generate a performance plot.
+
+    Args:
+        use_single_string (bool): Flag to indicate if a single string configuration should be used.
+    """
     if use_single_string:
         string_length = 100
         test_string = generate_random_string(string_length)

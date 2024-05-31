@@ -154,3 +154,5 @@ elitism = 20
 crossoverNum = 2  
 generation = 10  
 mutationRate = 0.01
+
+<h3 style="text-align: right;">Jakab Benedek (KZXLAC)</h3>
