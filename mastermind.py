@@ -86,6 +86,11 @@ def generate_plot(results, param_for_graph):
     plt.grid(True)
     plt.show()
 
+def dict_to_gaconfig(config_dict):
+    config_dict_copy = config_dict.copy()
+    config_dict_copy.pop('string_length', None)
+    return GAConfig(**config_dict_copy)
+
 def main(use_single_string):
     if use_single_string:
         string_length = 100
@@ -112,14 +117,7 @@ def main(use_single_string):
         for params in parameter_sets:
             string_length = params["string_length"]
             test_string = generate_random_string(string_length)
-            config = GAConfig(
-                population_size=params["population_size"],
-                iterations=params["iterations"],
-                elitism=params["elitism"],
-                crossover_num=params["crossover_num"],
-                random_generated_candidate_num=params["random_generated_candidate_num"],
-                mutation_rate=params["mutation_rate"]
-            )
+            config = dict_to_gaconfig(params)
 
             best_solution = genetic_algorithm(test_string, config)
             fitness_score = fitness_function(best_solution, test_string)
