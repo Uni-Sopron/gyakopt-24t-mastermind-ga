@@ -1,0 +1,25 @@
+GAConfig: GAConfig(population_size=100, iterations=100, elitism=20, crossover_num=2, random_generated_candidate_num=10, mutation_rate=0.01)
+Test string: mAN$,Eia9/0IjM}Os)5m$V=iQ]8|`q=)Bt}B*>[3Rlx6|/lB^a=iG6[g]1j:rr^p>@_L"koVXzK=]t0.2~'1-m8!5-:H7)*A&nSZ
+Best solution: g61$,Ei!9=0QqMW{oM5S$VBiCf8|`qs)nEPI*>[oIlx6k&2-^ayiGjvBPA|;r{w@>r:<"koVX=Yrn8].2~'12V8u5-:HU)}U&>hW
+Fitness score: 45
+
+GAConfig: GAConfig(population_size=200, iterations=100, elitism=20, crossover_num=2, random_generated_candidate_num=10, mutation_rate=0.01)
+Test string: ,O)h0UXKf4P8yDYVo]L:-WVs<D<]I{(Z9eTNzG%:<8&f{g.V\@a;7Yo]|Yq'S(mG(m7cd1m/D}E[q2y\z=u+ROn0&<U?v;_Szd_H
+Best solution: oO&g0WXKY-P8^DY<o]_:.5Ys<DC]~{(ZVeTNpG%:<e&f{a.VX@a;7Yo]$Yq\S(eG|mtcd1m/DHE[qpy\z=t+^OnA&<U`v;k{zx_H
+Fitness score: 67
+
+GAConfig: GAConfig(population_size=300, iterations=100, elitism=20, crossover_num=2, random_generated_candidate_num=10, mutation_rate=0.01)
+Test string: HyKCo?2+>o5/a\$4sT;2(1818byQsqbe#h*=#g+Bi!}kQerN70L-YMmJ_*{lr`v_llq&eI2hHIb;/Ywgz96*SELU?%wudg%jrZrU
+Best solution: ?wKCo?2+>o5Ha\$4sT;2(1y];byQsqbq#h*=#g+Bi!vkQe.N.0QBYaZ,_1{l5`v_ll*&eI2]HIb;/}zc?96*S)LQ?%wudrzjrZ/U
+Fitness score: 72
+
+GAConfig: GAConfig(population_size=400, iterations=100, elitism=20, crossover_num=2, random_generated_candidate_num=10, mutation_rate=0.01)
+Test string: RkY841xoh)i'.'w'tlqv|~s1XoHxr"W<+`#&.d~kWrwxEZ`IK!A]q==zB@^#/"<[h=9H}tEv;\0UqF/?u=RslL4!RQwyod.Lzfz_
+Best solution: R2Y84UNoh)Z'.'R'tsqv|xs1XoHxr"W<+`#&+-0kWriHEz`IKeA|q#=zB@^#/6<[$=9c`"Ev;\PUqF/?u=RsxL4!RQw)od.Lzfz_
+Fitness score: 76
+
+GAConfig: GAConfig(population_size=500, iterations=100, elitism=20, crossover_num=2, random_generated_candidate_num=10, mutation_rate=0.01)
+Test string: g>/{};7_u8c~GB,Rk[#haxp!4U)xE9{7'd?N-N:3=zm0AC#~5!f24X(D}M2h3'MDUinu"Hph/04`tesi#_\8{J\3-q94'}SO}p6}
+Best solution: g>/{};7_u8c~GB,Rk[YhVxpA4UDEE8{7'd?*pN:3=zm0AC`~w!J24X(:}M2h3'MDUinuB0ph/08`tesi2_\8SJ\3Cq94'}SO}O6}
+Fitness score: 81
+

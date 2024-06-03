@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from dataclasses import dataclass
 import argparse
 import json
+import os
 
 CHARACTERS = string.ascii_letters + string.digits + string.punctuation
 
@@ -102,13 +103,31 @@ def mutate(candidate, mutation_rate):
             candidate_list[i] = random.choice(CHARACTERS)
     return ''.join(candidate_list)
 
-def genetic_algorithm(test_string, config):
+def log_results(filepath, config, test_string, best_solution, fitness_score):
+    """
+    Log the GAConfig settings, test string, best solution, and its fitness score to a file.
+
+    Args:
+        filepath (str): The path to the log file.
+        config (GAConfig): The configuration for the genetic algorithm.
+        test_string (str): The target string.
+        best_solution (str): The best solution found by the genetic algorithm.
+        fitness_score (int): The fitness score of the best solution.
+    """
+    with open(filepath, 'a') as file:
+        file.write(f"GAConfig: {config}\n")
+        file.write(f"Test string: {test_string}\n")
+        file.write(f"Best solution: {best_solution}\n")
+        file.write(f"Fitness score: {fitness_score}\n\n")
+
+def genetic_algorithm(test_string, config, log_filepath):
     """
     Run the genetic algorithm to find the best solution for the target string.
 
     Args:
         test_string (str): The target string.
         config (GAConfig): The configuration for the genetic algorithm.
+        log_filepath (str): The path to the log file.
 
     Returns:
         str: The best solution found by the genetic algorithm.
@@ -133,9 +152,12 @@ def genetic_algorithm(test_string, config):
         current_best_solution = max(population, key=lambda x: fitness_function(x, test_string))
         if fitness_function(current_best_solution, test_string) == len(test_string):
             print("Perfect solution found in " + str(i) + ". iteration")
+            log_results(log_filepath, config, test_string, current_best_solution, len(test_string))
             return current_best_solution
 
     best_solution = max(population, key=lambda x: fitness_function(x, test_string))
+    fitness_score = fitness_function(best_solution, test_string)
+    log_results(log_filepath, config, test_string, best_solution, fitness_score)
     return best_solution
 
 def generate_plot(results, param_for_graph):
@@ -183,12 +205,16 @@ def main(use_single_string):
     Args:
         use_single_string (bool): Flag to indicate if a single string configuration should be used.
     """
+    log_filepath = 'log.txt'
+    if os.path.exists(log_filepath):
+        os.remove(log_filepath)
+
     if use_single_string:
         string_length = 100
         test_string = generate_random_string(string_length)
         print("Test string is: " + test_string)
         config = load_config_from_json('single_string_config.json')
-        best_solution = genetic_algorithm(test_string, config)
+        best_solution = genetic_algorithm(test_string, config, log_filepath)
         print("Best solution:", best_solution)
         print("Fitness score:", fitness_function(best_solution, test_string))
     else:
@@ -210,7 +236,7 @@ def main(use_single_string):
             test_string = generate_random_string(string_length)
             config = dict_to_gaconfig(params)
 
-            best_solution = genetic_algorithm(test_string, config)
+            best_solution = genetic_algorithm(test_string, config, log_filepath)
             fitness_score = fitness_function(best_solution, test_string)
             
             results.append({param_for_graph: params[param_for_graph], "fitness_score": fitness_score})

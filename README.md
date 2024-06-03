@@ -62,6 +62,17 @@ generatePlot(results, paramForGraph)
 ```
 függvénnyel kirajzoljuk a megfelelő grafikont. Mivel azonos beállítások fitness scoreját más hosszúságú stringekkel nem éri meg összehasonlítani a fitness score és a string hosszának egyenes arányossága miatt, ezért ilyen esetben mindig a fitness score / string hossz értéket jeleníti meg, így látjuk, hogy mekkora részét találta el a generált stringnek.
 
+## Naplózás
+
+A program futása során a következő adatokat naplózzuk a log.txt fájlba:
+
+- GAConfig: Az algoritmus konfigurációs beállításai.
+- Teszt string: Az algoritmus által kitalálni próbált cél string.
+- Legjobb megoldás: Az algoritmus által talált legjobb megoldás.
+- Fitness score: A legjobb megoldás fitness score-ja.
+
+Ezzel biztosítjuk, hogy a futások eredményei visszakövethetőek és dokumentáltak legyenek. 
+
 ## Grafikonok
 
 Mindig öt példával dolgozom, legyen az alapbeállítás a következő (ha explicit nem utalok másra, mindig ez az egyes vizsgálatok kiindulópontja):
