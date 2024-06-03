@@ -234,11 +234,26 @@ def main(use_single_string):
         # string_length population_size iterations elitism crossover_num random_generated_candidate_num mutation_rate
         param_for_graph = "population_size"
         parameter_sets = [
-            {"string_length": 100, "population_size": 100, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
-            {"string_length": 100, "population_size": 200, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
-            {"string_length": 100, "population_size": 300, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
-            {"string_length": 100, "population_size": 400, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
-            {"string_length": 100, "population_size": 500, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
+            {"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01},
         ]
 
         results = []
@@ -246,11 +261,11 @@ def main(use_single_string):
         all_iterations = []
         all_fitness_scores = []
 
-        for idx, params in enumerate(parameter_sets, 1):  # Start index from 1
+        for idx, params in enumerate(parameter_sets, 1):
             string_length = params["string_length"]
             test_string = generate_random_string(string_length)
             config = dict_to_gaconfig(params)
-
+            print(f"Running genetic algorithm for {idx}. case")
             best_solution, best_fitness_per_iteration = genetic_algorithm(test_string, config, log_filepath)
             fitness_score = fitness_function(best_solution, test_string)
             results.append({param_for_graph: params[param_for_graph], "fitness_score": fitness_score})
@@ -258,7 +273,7 @@ def main(use_single_string):
             all_iterations.append(range(1, len(best_fitness_per_iteration) + 1))
             all_fitness_scores.append(best_fitness_per_iteration)
 
-        for idx, (iterations, fitness_scores) in enumerate(zip(all_iterations, all_fitness_scores), 1):  # Start index from 1
+        for idx, (iterations, fitness_scores) in enumerate(zip(all_iterations, all_fitness_scores), 1):
             plt.plot(iterations, fitness_scores, label=f"Set {idx}")
         
         plt.xlabel('Iteration')

@@ -45,7 +45,7 @@ parameterSets:
 ```
 Ezzel egy tömbön belül dictionaryk segítségével különböző beállításokat próbálhatunk ki, például: 
 ```python 
-{"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01}
+{"string_length": 100, "population_size": 100, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01}
 ```
 ### Grafikus megjelenítés
 A grafikus megjelenítés, mivel kétdimenziós, csak akkor használható megfelelően, ha ezen paraméterekből csak az egyiket változtatjuk egy adott futtatásnál.
@@ -78,7 +78,7 @@ Ezzel biztosítjuk, hogy a futások eredményei visszakövethetőek és dokument
 Mindig öt példával dolgozom, legyen az alapbeállítás a következő (ha explicit nem utalok másra, mindig ez az egyes vizsgálatok kiindulópontja):
 
 ```python
-{"stringLength": 100, "populationSize": 100, "iterations": 100, "elitism": 20, "crossoverNum": 2, "generation": 10, "mutationRate": 0.01}
+{"string_length": 100, "population_size": 100, "iterations": 100, "elitism": 20, "crossover_num": 2, "random_generated_candidate_num": 10, "mutation_rate": 0.01}
 ```
 
 Többször futtatva a következő fitness score eredményeket kaptam:  
@@ -157,7 +157,7 @@ Végezetül a crossoverek mutációjának valószínűségét emeljük 0.01, 0.0
 
 Ezek alapján egy legoptimálisabb beállításként a következőre következtetek egy 100 karakteres string kitalálására:
 
-Population: 600, Iterations: 300, Mutation rate: 0.05, minden más az eredeti állapotban marad. Meglepő, de ezzel a beállítással maximum 95-ös fitness scoret tudtam elérni. A mutation rate 0.01-re való visszaállításával viszont potenciálisan 250 iterációból tökéletes megoldásra jutott az algoritmus. Ebből következően az általam megtalált egyik legoptimálisabb beállíáts egy 100 karakteres stringre:
+Population: 600, Iterations: 300, Mutation rate: 0.05, minden más az eredeti állapotban marad. Meglepő, de ezzel a beállítással maximum 95-ös fitness scoret tudtam elérni. A mutation rate 0.01-re való visszaállításával viszont potenciálisan 250 iterációból tökéletes megoldásra jutott az algoritmus. Ebből következően az általam megtalált egyik legoptimálisabb beállítás egy 100 karakteres stringre:
 
 ```python
 stringLength = 100  
@@ -165,17 +165,101 @@ populationSize = 600
 iterations = 300  
 elitism = 20  
 crossoverNum = 2  
-generation = 10  
+random_generated_candidate_num = 10  
 mutationRate = 0.01
 ```
 ### Több futtatás egy grafikonon ábrázolása
 
 Amikor több beállítással futtatjuk az algoritmust, az összes konvergencia-grafikon látható lesz egyetlen ábrán, ami lehetővé teszi az eredmények összehasonlítását és a teljesítményelemzést. Minden futtatás egy külön vonalat képvisel a grafikonon, amely az iterációk számát mutatja az adott futtatás során elért legjobb fitness értékkel.
 
-#### Példa grafikon
+#### Növekvő populáció
+
+A grafikon az alapbeállításokkal készült, 100-anként növekvő populációval. Ezesetben a 400-as populáció éppen egy picit jobb eredményt ért el, mint az 500-as.
 
 ![](convergence.png)
 
+#### Azonos paraméterek vizsgálata
+
+A grafikon az alapbeállításokkal készült. 20 futtatást követően a minimum és maximum fitness score közötti különbség nagyjából 10 volt.
+
+![](convergence20same.png)
+
+A következő grafikont először a 
+```python 
+{"string_length": 4000, "population_size": 1000, "iterations": 1000, "elitism": 300, "crossover_num": 10, "random_generated_candidate_num": 400, "mutation_rate": 0.05}
+```
+beállításokkal próbáltam elkészíteni. 20 futtatást adtam meg, de 20 perc várakozás után feladtam. Végülis 4000 karakteres stringből 1000-et generálni, mindegyikre fitness scoret számolni, majd 400 új stringet generálni, majd 300 crossovert készíteni, úgy, hogy mindegyik (300*4000 karakteren végigiterálni), mindezt 1000-szer és az egészet 20-szor talán egy kicsit nagy feladat egy átlagos otthoni PC-nek.
+
+Csökkentettem az elvárásokat
+```python 
+{"string_length": 1000, "population_size": 400, "iterations": 450, "elitism": 300, "crossover_num": 10, "random_generated_candidate_num": 400, "mutation_rate": 0.05}
+```
+beállításokkal készült. 20 futtatást követően a minimum és maximum fitness score közötti különbség nagyjából 5 volt. Nem születtek szép eredmények, 1000-ből 30 karaktert aligha tudott eltalálni. Az iterációk fele után, már nem sok esetben tudott javulást elérni, meglehetősen megakadt egy típusú megoldásnál. Ez 34 percig futott.
+
+NOTE! (Ez a megjegyzés egy komoly felismerés pillanatában került ide.)
+A population_size-al olyan sokra nem mentem, mivel az a kezdeti populáció méretét határozza meg. Szóval ezesetben a legjobb 300-at megtartotta, majd 400 újat generált és sosem történt crossover.
+
+![](convergence20same1000char.png)
+
+Tovább csökkentettem az elvárást, a stringek hosszát levettem 400-ra, illetve az elitizmus mértéke kissé túlzó lehetett, úgyhogy lejjebb vettem 150-re. A populációt felemeltem 600-ra, a generált egyedek szám pedig 350. 150+350=500, szóval 100 crossover fog készülni.
+Beállítás:
+```python 
+{"string_length": 400, "population_size": 600, "iterations": 450, "elitism": 150, "crossover_num": 10, "random_generated_candidate_num": 350, "mutation_rate": 0.05}
+```
+20 futtatást követően a minimum és maximum fitness score közötti különbség nagyjából 13 volt. Ez 18 percig futott.
+
+![](convergence20same400char.png)
+
+Tovább csökkentettem az elvárást, a stringek hosszát levettem 300-ra. Felemeltem a mutációs rátát 10%-ra, mivel a 10 crossover azonos szülőkből készül, a nagyobb mutációs ráta jobb diverzitást eredményez, ez által nagyobb szórást várok el.
+Beállítás:
+```python 
+{"string_length": 300, "population_size": 600, "iterations": 450, "elitism": 150, "crossover_num": 10, "random_generated_candidate_num": 350, "mutation_rate": 0.1}
+```
+20 futtatást követően a minimum és maximum fitness score közötti különbség nagyjából 8 volt. Ez 9 percig futott.
+
+![](convergence20same300char.png)
+
+Le a kékvérűekkel! az elitizmust lecsökkentettem 100-ra. Tovább csökkentettem az elvárást, a stringek hosszát levettem 200-ra.
+Beállítás:
+```python 
+{"string_length": 200, "population_size": 600, "iterations": 450, "elitism": 100, "crossover_num": 10, "random_generated_candidate_num": 350, "mutation_rate": 0.1}
+```
+20 futtatást követően a minimum és maximum fitness score közötti különbség nagyjából 8 volt. Ez 6 percig futott.
+
+![](convergence20same200char.png)
+
+Egyre jobban látható, hogy nem áll meg a fejlődés, csak időre lenne még szükség. Felemeltem az iterációk számát 700-ra. A string hosszát levettem 150-re. A crossoverek számát csökkentettem 2-re, hogy minél több szülő génjei öröklődhessenek. A generált elemek számát csökkentettem 100-ra, hogy növeljem a crossoverek számát. A mutációs rátát csökkentettem 0.01-re, hogy a szülő gének erősek maradjanak.
+Beállítás:
+```python 
+{"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01}
+```
+
+Ahogy látható ez a beállítás több tökéletes megoldást is eredményezett a legrosszabb 149 volt. Az elitizmusból készített crossoverek hatékonyak, ha kellő teret hagyunk nekik.
+
+![](convergence20same150char.png)
+
+### Összegzés 2
+
+Hasonlítsuk össze a mostani beállítást az első "optimális" beállítással!
+
+Többszörös:
+```python 
+{"string_length": 150, "population_size": 600, "iterations": 700, "elitism": 100, "crossover_num": 2, "random_generated_candidate_num": 100, "mutation_rate": 0.01}
+```
+
+Első:
+
+```python 
+stringLength = 100  
+populationSize = 600  
+iterations = 300  
+elitism = 20  
+crossoverNum = 2  
+random_generated_candidate_num = 10  
+mutationRate = 0.01
+```
+
+A populáció mérete egyezik, bár ezt főként a számítógép teljesítménye határozta meg. Lényegesen magasabb elitizmusra jutottam, ahogy a generált elemek száma is magasabb. A crossoverek hiányában kétszer annyi iterációra volt szükség hasonló minőségű megoldásokhoz. Bár a jelen tesztek cask szemléltető jelleggűek, ezek alapján olyan genetikus algoritmusokat preferálnék, amelyek rengeteg crossovert képeznek.
 
 
 <h3 style="text-align: right;">Jakab Benedek (KZXLAC)</h3>
