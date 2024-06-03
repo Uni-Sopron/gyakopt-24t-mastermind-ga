@@ -168,5 +168,14 @@ crossoverNum = 2
 generation = 10  
 mutationRate = 0.01
 ```
+### Több futtatás egy grafikonon ábrázolása
+
+Amikor több beállítással futtatjuk az algoritmust, az összes konvergencia-grafikon látható lesz egyetlen ábrán, ami lehetővé teszi az eredmények összehasonlítását és a teljesítményelemzést. Minden futtatás egy külön vonalat képvisel a grafikonon, amely az iterációk számát mutatja az adott futtatás során elért legjobb fitness értékkel.
+
+#### Példa grafikon
+
+![](convergence.png)
+
+
 
 <h3 style="text-align: right;">Jakab Benedek (KZXLAC)</h3>

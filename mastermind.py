@@ -131,8 +131,10 @@ def genetic_algorithm(test_string, config, log_filepath):
 
     Returns:
         str: The best solution found by the genetic algorithm.
+        list of int: The best fitness score per iteration.
     """
     population = [generate_random_string(len(test_string)) for _ in range(config.population_size)]
+    best_fitness_per_iteration = []
     for i in range(config.iterations):
         best_candidates = select_parents(population, config.elitism, test_string)
 
@@ -150,15 +152,17 @@ def genetic_algorithm(test_string, config, log_filepath):
         
         population = next_population
         current_best_solution = max(population, key=lambda x: fitness_function(x, test_string))
+        best_fitness_per_iteration.append(fitness_function(current_best_solution, test_string))
         if fitness_function(current_best_solution, test_string) == len(test_string):
             print("Perfect solution found in " + str(i) + ". iteration")
             log_results(log_filepath, config, test_string, current_best_solution, len(test_string))
-            return current_best_solution
+            return current_best_solution, best_fitness_per_iteration
 
     best_solution = max(population, key=lambda x: fitness_function(x, test_string))
     fitness_score = fitness_function(best_solution, test_string)
     log_results(log_filepath, config, test_string, best_solution, fitness_score)
-    return best_solution
+    best_fitness_per_iteration.append(fitness_score)
+    return best_solution, best_fitness_per_iteration
 
 def generate_plot(results, param_for_graph):
     """
@@ -214,9 +218,17 @@ def main(use_single_string):
         test_string = generate_random_string(string_length)
         print("Test string is: " + test_string)
         config = load_config_from_json('single_string_config.json')
-        best_solution = genetic_algorithm(test_string, config, log_filepath)
+        best_solution, best_fitness_per_iteration = genetic_algorithm(test_string, config, log_filepath)
         print("Best solution:", best_solution)
         print("Fitness score:", fitness_function(best_solution, test_string))
+
+        plt.plot(range(1, len(best_fitness_per_iteration) + 1), best_fitness_per_iteration, label="Single String")
+        plt.xlabel('Iteration')
+        plt.ylabel('Fitness Score')
+        plt.title('Convergence Plot for Single String')
+        plt.grid(True)
+        plt.legend()
+        plt.show()
     else:
         # Use a parameter of the following to create a graph: 
         # string_length population_size iterations elitism crossover_num random_generated_candidate_num mutation_rate
@@ -231,15 +243,31 @@ def main(use_single_string):
 
         results = []
 
-        for params in parameter_sets:
+        all_iterations = []
+        all_fitness_scores = []
+
+        for idx, params in enumerate(parameter_sets, 1):  # Start index from 1
             string_length = params["string_length"]
             test_string = generate_random_string(string_length)
             config = dict_to_gaconfig(params)
 
-            best_solution = genetic_algorithm(test_string, config, log_filepath)
+            best_solution, best_fitness_per_iteration = genetic_algorithm(test_string, config, log_filepath)
             fitness_score = fitness_function(best_solution, test_string)
-            
             results.append({param_for_graph: params[param_for_graph], "fitness_score": fitness_score})
+
+            all_iterations.append(range(1, len(best_fitness_per_iteration) + 1))
+            all_fitness_scores.append(best_fitness_per_iteration)
+
+        for idx, (iterations, fitness_scores) in enumerate(zip(all_iterations, all_fitness_scores), 1):  # Start index from 1
+            plt.plot(iterations, fitness_scores, label=f"Set {idx}")
+        
+        plt.xlabel('Iteration')
+        plt.ylabel('Fitness Score')
+        plt.title('Convergence Plot')
+        plt.grid(True)
+        plt.legend()
+        plt.show()
+
         generate_plot(results, param_for_graph)
 
 
