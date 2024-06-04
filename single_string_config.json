@@ -1,0 +1,8 @@
+{
+    "population_size": 600,
+    "iterations": 300,
+    "elitism": 20,
+    "crossover_num": 2,
+    "random_generated_candidate_num": 10,
+    "mutation_rate": 0.01
+}

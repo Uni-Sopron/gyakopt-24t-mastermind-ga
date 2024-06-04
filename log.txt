@@ -1,0 +1,100 @@
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: /:y5kpCb!F3;^=h`=B7?y7]2g+ZHY1$HP&M\:gJs`|(-aq/0#?rm8zqKr_T.Jc*3zq%tg\Pu~:T$Jc$r+"wS"RuHPj{t'"cixF+0gncN.?<jhU$>^vcP6>Jr6(v7gz|-|!%=y!2zKYsq@zI/)Q*ty}
+Best solution: /:y5kpCb!F3;^=h`=B7?y7]2g+ZHY1$HP&M\:gJs`|(-aq/0#?rm8zqKr_T.Jc*3zq%tg\Pu~:T$Jc$r+"wS"RuHPj{t'"cixF+0gncN.?<jhU$>^vcP6>Jr6(v7gz|-|!%=y!2zKYsq@zI/)Q*ty}
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: 7k/#:{`S!o/j=f#PM/ivaZ=q1}]4h"_/70~`|Du,S^Ec~WJ4[/pW6X}!~?8:IKi=CQ9B:82$pL^K21:i>YWaTX@1|{?@SLT@&}gYST0sqwZrehkXg*Ar%<HVd92B>KZ&jpKG=M:Sy_;Ft6';)>||x.
+Best solution: 7k/#:{`S!o/j=f#PM/ivaZ=q1}]4h"_/70~`|Du,S^Ec~WJ4[/pW6X}!~?8:IKi=CQ9B:82$pL^K21:i>YWaTX@1|{?@SLT@&}gYST0sqwZrehkXg*Ar%<HVd92B>KZ&jpKG=M:Sy_;Ft6';)>||x.
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: 2T>6Q1{`ax;:6ngl}=!8=C.Ya/#9JTF;;{$N'%9:O!PZm_0r-kaK#?aV(r?29DUTb8Q&6''4qV}NS<zEe3-vK`3g=jS?'(&7rcsC$e-WPAJf@Ej@]}SKjN|!xKNC:R6$#hQN~K#(|~@hFSc~5[_36,
+Best solution: 2T>6Q1{`ax;:6ngl}=!8=C.Ya/#9JTF;;{$N'%9:O!PZm_0r-kaK#?aV(r?29DUTb8Q&6''4qV}NS<zEe3-vK`3g=jS?'(&7rcsC$e-WPAJf@Ej@]}SKjN|!xKNC:R6$#hQN~K#(|~@hFSc~5[_36,
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: `#-hW?O@ds-xAf.*)JRZ$deFBetnwS2:7f3%cINU=Vdn"?01r0+?q7sFP6)<Y;ry$ZxS8tMiOJurg?X!l<]2pJ_!5yT!*]>%kDJW',9E3og{2$+nL*~&(L%j_>;){x?IR>G+Zr=0]ZCrUsZ*u=~C\q
+Best solution: `#-hW?O@ds-xAf.*)JRZ$deFBetnwS2:7f3%cINU=Vdn"?01r0+?q7sFP6)<Y;ry$ZxS8tMirJurg?X!l<]2pJ_!5yT!*]>%kDJW',9E3og{2$+nL*~&(L%j_>;){x?IR>G+Zr=0]ZCrUsZ*u=~C\q
+Fitness score: 149
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: v?S$,P1$~Nn_{7C3u/f,Rds$p18<`_`f|\3V^p=WaHQ,H<8ZUJVPx~pjmTIAxk[625b%z&!qZ+o=uN~=2p6f0C%\@5}~=NUt=rCf4@{_g9jVG,!ypII:a@(TdMPv>LAHeH>3A%G1V5/\lIBXWE")U?
+Best solution: v?S$,P1$~Nn_{7C3u/f,Rds$p18<`_`f|\3V^p=WaHQ,H<8ZUJVPx~pjmTIAxk[625b%z&!qZ+o=uN~=2p6f0C%\@5}~=NUt=rCf4@{_g9jVG,!ypII:a@(TdMPv>LAHeH>3A%G1V5/\lIBXWE")U?
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: ~xNEeLiBX~S;~{e1":glb!d0H!Vgo"9z3|$mFNe}B-Rj^sO;_lZ(`v'B2|0?keKqIA#')dw~&4UimPl>%c7_@e7U1mT)Ip6rsWY+tN[Q`KQ.6x~u(;]y`nOG50@b-e,}~&Z%$V9nY-{h0u{LL=n7xA
+Best solution: ~xNEeLiBX~S;~{e1":glb!d0H!Vgo"9z3|$mFNe}B-Rj^sO;_lZ(`v'B2|0?keKqIA#')dw~&4UimPl>%c7_@e7U1mT)Ip6rsWY+tN[Q`KQ.6x~u(;]y`nOG50@b-e,}~&Z%$V9nY-{h0u{LL=n7xA
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: T%^Je9U9(rpr]%gl*YNp4/`[B$~*<i|;pRVaun%h[l`N_t:9D0*qDYFL$b&0@VDm"@DR1Vd0$Xrw&PYLI*v!;JFM&;_M=xk3Ru:=h!TjtjP_{2cYg*!nz]UeL[Ah?"Kn#zE?7$19OXl5QU{+`,HU'=
+Best solution: T%^Je9U9(rpr]%gl*YNp4/`[B$~*<i|;pRVaun%h[l`N_t:9D0*qDYFL$b&0@VDm"@DR1Vd0$Xrw&PYLI*v!;JFM&;_M=xk3Ru:=h!TjtjP_{2cYg*!nz]UeL[Ah?"Kn#zE?7$19OXl5QU{+`,HU'=
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: ^hX}AF3d`3.0,xDi[;fsu{D'Z|u7M,6w-JmdYCZF*3;ybKq+ke\GV`F/Et`'RLt-HCrny2AP|@QKJJ"a%Ic"=*Q+%@LhwMIuWig69P0b,Zs):f-qnMJT[f;m(SF7Z";T4rF%fMv?pBQFhLo$T\ld@d
+Best solution: ^hX}AF3d`3.0,xDi[;fsu{D'Z|u7M,6w-JmdYCZF*3;ybKq+ke\GV`F/Et`'RLt-HCrny2AP|@QKJJ"a%Ic"=*Q+%@LhwMIuWig69P0b,Zs):f-qnMJT[f;m(SF7Z";T4rF%fMv?pBQFhLo$T\ld@d
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: )Qk654QizfTgL"/NxkZ=QvTUYA]F5e:_,$z=N)Ikls9wJI<dzNl+Nx<.:-hwSStX^CqoUQ.*<1.(x),"3?:&"oajeUb]U3C=GQXA"g8j<:f"d/TRfl:z^]0L5OJ8W~L!R_+Ud2vK(`hiyQnKHBUkN1
+Best solution: )Qk654QizfTgL"/NxkZ=QvTUYA]F5e:_,$z=N)Ikls9wJI<dzNl+Nx<.:-hwSStX^CqoUQ.*<1.(x),"3?:&"oajeUb]U3C=GQXA"g8j<:f"d/TRfl:z^]0L5OJ8W~L!R_+Ud2vK(`hiyQnKHBUkN1
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: 8mqbdL*nsM|ya53dg?I1sP7q2Zp1y"q9%F7*K}&dm8Hy~Va;O9tQ;1M@'[xBsk2S6p"FB,aJ6dGxAW>rBV>Ty8MUGS#<B5}`pghn7Ek}PfVC[)nB)W,!$kCN[rtJI9qXA"~_xv13MgnE|CvQy$s0K4
+Best solution: 8mqbdL*nsM|ya53dg?I1sP7q2Zp1y"q9%F7*K}&dm8Hy~Va;O9tQ;1M@'[xBsk2S6p"FB,aJ6dGxAW>rBV>Ty8MUGS#<B5}`pghn7Ek}PfVC[)nB)W,!$kCN[rtJI9qXA"~_xv13MgnE|CvQy$s0K4
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: jTJ;M5)2:XHjkx>Kq,bD3)}@2VnE0M)0zluB={G%QS+V4tA"Hm4[A8bg+dA\@,%[uwIyoDlue/WsaECTg_pTA[#(eCbr]g9K9?DY9I&rO!GVw%o]QdO5@=fKu>Elb(]Gx,v:{`S`NoJqPL/E5O<&wF
+Best solution: jTJ;M5)2:XHjkx>Kq,bD3)}@2VnE0M)0zluB={G%QS+V4tA"Hm4[A8bg+dA\@,%[uwIyoDlue/WsaECTg_pTA[#(eCbr]g9K9?DY9I&rO!GVw%o]QdO5@=fKu>Elb(]Gx,v:{`S`NoJqPL/E5O<&wF
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: k-]>1~|3@Phlkm/U|wd?NEmM:ZqXy[s5%^2G4|@YW=H}eJ^qT%41JPftq2*j*IXs`JS4%bj,y%;CG{BTxg<gW[&FVxW$q:FDJ5$^$@KLs61U\NTZ>^.<$=a~uCl((6{x\IC}z-*z#@q9t>kWPY/OdB
+Best solution: k-]>1~|3@Phlkm/U|wd?NEmM:ZqXy[s5%^2G4|@YW=H}eJ^qT%41JPftq2*j*IXs`JS4%bj,y%;CG{BTxg<gW[&FVxW$q:FDJ5$^$@KLs61U\NTZ>^.<$=a~uCl((6{x\IC}z-*z#@q9t>kWPY/OdB
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: BI5jFl4{1Ryk1XP1y<0Pi7A4dPX^4bod.Dc*XVciWm!_f>*A+r9~hI'H4I7ze%ZIME9@]x(=,*Q$"29f=iL#,D2m*1V"dE~|7Gl1iI2^;[9qz.dS4)$p(K?\?K%L6tjfP{)#J~*F~26YW:>c:&40q"
+Best solution: BI5jFl4{1Ryk1XP1y<0Pi7A4dPX^4bod.Dc*XVciWm!_f>*A+r9~hI'H4I7ze%ZIME9@]x(=,*Q$"29f=iL#,D2m*1V"dE~|7Gl1iI2^;[9qz.dS4)$p(K?\?K%L6tjfP{)#J~*F~26YW:>c:&40q"
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: .^-W\9L5CQ|`w+IPlee&n4h:q7+xf9.I1vL4ztQA$GdNc5MaMGmX^IpD{(-ChjkjFJjg48i"I?n-nS@;ol&5hsqyB58(]EM?"S@~BR-dut|^]B5*>Uk9LEmNMnn?X4MUyF[5#U=yf))I=I8sEXvy(Y
+Best solution: .^-W\9L5CQ|`w+IPlee&n4h:q7+xf9.I1vL4ztQA$GdNc5MaMGmX^IpD{(-ChjkjFJjg48i"I?n-nS@;ol&5hsqyB58(]EM?"S@~BR-dut|^]B5*>Uk9LEmNMnn?X4MUyF[5#U=yf))I=I8sEXvy(Y
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: rbU"q'=pv%Rw-3Aq}0WuwFd*`OB;9xPc339<?/J}K!y@\w;#wD~NM2g7]ooW@gFL@0rQZTzY(4XU}"-+cJO_&K|4tt\(c%S,]4WO,di@@eRU)ntA=Fz+L2KuDY"z9cH"-N$u.vM\m>GYq7=XtZ(js&
+Best solution: rbU"q'=pv%Rw-3Aq}0WuwFd*`OB;9xPc339<?/J}K!y@\w;#wD~NM2g7]ooW@gFL@0rQZTzY(4XU}"-+cJO_&K|4tt\(c%S,]4WO,di@@eRU)ntA=Fz+L2KuDY"z9cH"-N$u.vM\m>GYq7=XtZ(js&
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: E<F$]&EjozZ|7~btv+s2yF}U;,.O7MIfVFjCL|=!SrV?3ew:kH2z1rok#l?gq,Qr<d,Ab2QEG<y'>8KZ:?Kn1bkg$q0nm\Z6gyWRNTw+DoAk{I-9UKyj?.,KwRMw>w$JND=~w[!`BZWTx8MW[JA#`6
+Best solution: E<F$]&EjozZ|7~btv+s2yF}U;,.O7MI]VFjCL|=!SrV?3ew:kH2z1rok#l?gq,Qr<d,Ab2QEG<y'>8KZ:?Kn1bkg$q0nm\Z6gyWRNTw+DoAk{I-9UKyj?.,KwRMw>w$JND=~w[!`BZWTx8MW[JA#`6
+Fitness score: 149
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: V9*[<+%^cQDNI\zei0\%7m'M^9Mn7mnzbf}0uS3UY#erX4,2)F:Do.g_zP[DQ=s(:RAwzuc0sC9:=?RwAhYUdtJ33'>u.X+qL@xzrxsO?g>Ru$EctfY&nT%]y=Ls0uMMeJ\Y#e7Qa?*}@/x:&yz#<=
+Best solution: V9*[<+%^cQDNI\zei0\%7m'M^9Mn7mnzbf}0uS3UY#erX4,2)F:Do.g_zP[DQ=s(:RAwzuc0sC9:=?RwAhYUdtJ33'>u.X+qL@xzrxsO?g>Ru$EctfY&nT%]y=Ls0uMMeJ\Y#e7Qa?*}@/x:&yz#<=
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: f0-x5NH67?@ylzSDO{2DD~R:#jda;<jV~:Im&qJRWQ2}s<ue]0G}z>=Rs(8-uH:2*pNcBTXH>\5seoH^9'&e\Y2AqE3(pe\tbpdfJpWW<=\P}Yq:FXlvRs:O9H|u+VmKI<5ZR=vA;49OjI18Vdl]~8
+Best solution: f0-x5NH67?@ylzSDO{2DD~R:#jda;<jV~:Im&qJRWQ2}s<ue]0G}z>=Rs(8-uH:2*pNcBTXH>\5seoH^9'&e\Y2AqE3(pe\tbpdfJpWW<=\P}Yq:FXlvRs:O9H|u+VmKI<5ZR=vA;49OjI18Vdl]~8
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: 1oQ}H*J_,^+UP=IN+j>G.K$EP)t[B}CyQlb%{-+qfMZ-xCkLe.}XG')a^*"R:6#)Pm\FT-^^a;Uvlf~|NzvD3\3`#tk/w=fjT@Y<7q+(?<$&5c/PtFcf$tkEWqiuZs>-UvR5{;;pYQt;bJxzwJHj}"
+Best solution: 1oQ}H*J_,^+UP=IN+j>G.K$EP)t[B}CyQlb%{-+qfMZ-xCkLe.}XG')a^*"R:6#)Pm\FT-^^a;Uvlf~|NzvD3\3`#tk/w=fjT@Y<7q+(?<$&5c/PtFcf$tkEWqiuZs>-UvR5{;;pYQt;bJxzwJHj}"
+Fitness score: 150
+
+GAConfig: GAConfig(population_size=600, iterations=700, elitism=100, crossover_num=2, random_generated_candidate_num=100, mutation_rate=0.01)
+Test string: AV'pUsV5=zK=x1IIcFa9g;HTalQ@HY[n!1%{C$,E:7DF4cSS6fw6Q73*)9%ZN7f"G7xpLI$g5^bnPj%JQBnQ(g?q/m5;K8Kl9quH6t-Hs}teH_0G'i,(A;~YQGj/;twsX<g"1E`04+'lzM=?,[B$Q"
+Best solution: AV'pUsV5=zK=x1IIcFa9g;HTalQ@HY[n!1%{C$,E:7DF4cSS6fw6Q73*)9%ZN7f"G7xpLI$g5^bnPj%JQBnQ(g?q/m5;K8Kl9quH6t-Hs}teH_0G'i,(A;~YQGj/;twsX<g"1E`04+'lzM=?,[B$Q"
+Fitness score: 150
+
